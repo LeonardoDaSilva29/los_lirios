@@ -1,0 +1,85 @@
+{% extends "./master.html" %}
+
+{% block title %} Lista Huéspedes {% endblock %}
+
+{% block body %}
+    <div class="rew">
+        <div class="col-md-4 offset-md-4">
+            <h1>Editar registro</h1>
+            <form action="/editarPersona/" method="POST" >{% csrf_token %}
+                <div class="form-group row py-2">
+                    <label for="nombre" value="{{persona.nombre}}" class="col-3 col-form-label">Nombre</label> 
+                    <div class="col-9">
+                      <input id="nombre" name="nombre" type="text" required="required" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row py-2">
+                    <label for="apellido" value="{{persona.apellido}}" class="col-3 col-form-label">Apellido</label> 
+                    <div class="col-9">
+                      <input id="apellido" name="apellido" type="text" required="required" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row py-2">
+                    <label for="email" value="{{persona.email}}" class="col-3 col-form-label">E-mail</label> 
+                    <div class="col-9">
+                      <input id="email" name="email" type="email" required="required" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row py-2">
+                    <label for="edad" value="{{persona.edad}}" class="col-3 col-form-label">Edad</label> 
+                    <div class="col-9">
+                      <input id="edad" name="edad" type="number" required="required" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row py-2">
+                    <label for="sexo" value="{{persona.sexo}}" class="col-3 col-form-label">Sexo:</label>
+                    <div class="col-9">
+                        <select name="sexo" id="sexo" class="form-control">
+                            <option value="">Seleccionar</option>
+                            <option value="H">H</option>
+                            <option value="M">M</option>
+                            <option value="X">X</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row py-2">
+                    <label for="fecha_nacimiento" value="{{persona.fecha_naciento}}" class="col-3 col-form-label">Fecha de Nacimiento</label> 
+                    <div class="col-9">
+                      <input id="fecha_nacimiento" name="fecha_nacimiento" type="date" required="required" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row" py-2>
+                    <label for="fecha_entrada" value="{{persona.fecha_entrada}}" class="col-3 col-form-label">Fecha de entrada</label> 
+                    <div class="col-9">
+                      <input id="fecha_entrada" name="fecha_entrada" type="date" required="required" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row" py-2>
+                    <label for="fecha_salida" value="{{persona.fecha_salida}}" class="col-3 col-form-label">Fecha de salida</label> 
+                    <div class="col-9">
+                      <input id="fecha_salida" name="fecha_salida" type="date" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group row py-2">
+                    <label for="direccion" value="{{persona.direccion}}" class="col-3 col-form-label">Dirección</label> 
+                    <div class="col-9">
+                      <input id="direccion" name="direccion" type="text" class="form-control" required="required">
+                    </div>
+                </div>
+                <div class="form-group row py-2">
+                    <label for="telefono" value="{{persona.telefono}}" class="col-3 col-form-label">Teléfono</label> 
+                    <div class="col-9">
+                      <input id="telefono" name="telefono" type="number" required="required" class="form-control">
+                    </div>
+                </div> 
+                <div class="form-group row py-2">
+                    <div class="offset-3 col-9">
+                      <button name="submit" type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

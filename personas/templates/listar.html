@@ -1,17 +1,11 @@
 {% extends "./master.html" %}
 
-{% block title %} Lista Huéspedes{% endblock %}
+{% block title %} Lista Huéspedes {% endblock %}
 
 {% block body %}
 
-    <div class="row">
-        <div class="col-sm-12 col-md-5 col-lg-3 col-xl-3">
-            <div class="d-flex align-items-center bg-primary text-white px-3 py-2">
-                <i class="fas fa-users fa-2x mr-3"></i>
-                <div>
-                    <h2 class="mb-0 display-4">Agregar</h2>
-                </div>
-            </div>
+    <div class="row mx-3 overflow-auto ">
+        <div class="col-sm-12 col-md-5 col-lg-3 col-xl-3 py-2">
             <form action="/registrarPersona/" method="POST" >{% csrf_token %}
                 <div class="form-group row py-2">
                     <label for="nombre" class="col-3 col-form-label">Nombre</label> 
@@ -87,16 +81,18 @@
             </form>
                
         </div>
-        <div class="col-sm-12 col-md-7 col-lg-9 col-xl-9">
-            <div class="d-flex align-items-center bg-primary text-white px-3 py-2">
-                <i class="fas fa-users fa-2x mr-3"></i>
-                <div>
-                    <h2 class="mb-0 display-4">Listado de Huéspedes</h2>
-                </div>
-            </div>
+        <div class="col-sm-12 col-md-7 col-lg-9 col-xl-9 py-2" >
+            <h1>Listado de Huéspedes</h1>
+
             <div class="table-responsive py-2">
                 <table class="table table-striped">
                     <thead>
+                        <style>
+                            .table th {
+                            width: auto;
+                            white-space: nowrap;
+        }
+                        </style>
                         <tr>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
@@ -108,6 +104,7 @@
                             <th scope="col">Fecha Salida</th>
                             <th scope="col">Dirección</th>
                             <th scope="col">Telefono</th>
+                            <th colspan="2" scope="col">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -123,6 +120,9 @@
                             <td>{{p.fecha_salida}}</td>
                             <td>{{p.direccion}}</td>
                             <td>{{p.telefono}}</td>
+                            <td><a href="educionPersona/{{p.id}}" class="btn btn-info">Editar</a></td>
+                            <td><a href="eliminarPersona/{{p.id}}" class="btn btn-danger"">Eliminar</a></td>
+
                         </tr>
 
                         {% endfor %}
