@@ -1,0 +1,24 @@
+class Persona(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100, null=False)
+    apellido = models.CharField(max_length=100, null=False)
+    email = models.EmailField(max_length=100, null=False)
+    edad = models.IntegerField()
+    sexo = models.CharField(max_length=100)
+    fecha_nacimiento = models.DateField()
+    fecha_entrada = models.DateField(null=False)
+    fecha_salida = models.DateField(null=False)
+    direccion = models.CharField(max_length=100)
+    telefono = models.CharField(max_length=100, null=False)
+
+
+-para comenzar un proyecto en django debo configurar el seting.py: agregar la app, cambiar el idioma y la zona horaria.
+-despues en archivo models.py devo crear el modelo e importar.
+-en el admin.py:
+                #from .models import Persona
+                # Register your models here.
+                #admin.site.register(Persona)
+
+def listar(request):
+    personas = Persona.objects.all()
+    return render(request,"listar.html", {"personas":personas})
